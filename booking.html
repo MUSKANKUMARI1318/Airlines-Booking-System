@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyJet Airlines | Booking Confirmation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-plane"></i>
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>SkyJet <span>Airlines</span></h1>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="flights.html">Flights</a>
+                <div class="user-menu">
+                    <span id="userName">Guest</span>
+                    <div class="user-dropdown">
+                        <a href="#"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#"><i class="fas fa-ticket-alt"></i> My Bookings</a>
+                        <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+
+        <!-- Booking Progress -->
+        <div class="booking-progress">
+            <div class="progress-step completed">
+                <div class="step-number">1</div>
+                <div class="step-label">Search Flights</div>
+            </div>
+            <div class="progress-step completed">
+                <div class="step-number">2</div>
+                <div class="step-label">Select Flight</div>
+            </div>
+            <div class="progress-step completed">
+                <div class="step-number">3</div>
+                <div class="step-label">Passenger Details</div>
+            </div>
+            <div class="progress-step completed">
+                <div class="step-number">4</div>
+                <div class="step-label">Payment</div>
+            </div>
+            <div class="progress-step active">
+                <div class="step-number">5</div>
+                <div class="step-label">Confirmation</div>
+            </div>
+        </div>
+
+        <!-- Confirmation Content -->
+        <div class="confirmation-container">
+            <div class="confirmation-card success">
+                <div class="confirmation-header">
+                    <div class="confirmation-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>Booking Confirmed!</h2>
+                    <p>Your flight has been successfully booked</p>
+                </div>
+
+                <div class="booking-reference">
+                    <h3>Booking Reference</h3>
+                    <div class="reference-code">SKYJET-<span id="bookingRef">5A8B3C9D</span></div>
+                    <p class="reference-note">Please save this reference for check-in and future inquiries</p>
+                </div>
+
+                <div class="flight-ticket">
+                    <div class="ticket-header">
+                        <div class="airline-info">
+                            <i class="fas fa-plane"></i>
+                            <div>
+                                <h4>SkyJet Airlines</h4>
+                                <p>E-Ticket</p>
+                            </div>
+                        </div>
+                        <div class="ticket-status">
+                            <span class="status-confirmed">CONFIRMED</span>
+                        </div>
+                    </div>
+
+                    <div class="ticket-body">
+                        <div class="flight-route">
+                            <div class="route-city">
+                                <h3 id="departureCity">New York (JFK)</h3>
+                                <p id="departureDate">Dec 15, 2023</p>
+                                <p id="departureTime">08:30 AM</p>
+                            </div>
+                            <div class="route-line">
+                                <i class="fas fa-plane"></i>
+                                <span id="flightDuration">6h 15m</span>
+                            </div>
+                            <div class="route-city">
+                                <h3 id="arrivalCity">Los Angeles (LAX)</h3>
+                                <p id="arrivalDate">Dec 15, 2023</p>
+                                <p id="arrivalTime">11:45 AM PST</p>
+                            </div>
+                        </div>
+
+                        <div class="ticket-details">
+                            <div class="detail-row">
+                                <div class="detail-item">
+                                    <span class="detail-label">Flight Number</span>
+                                    <span class="detail-value" id="ticketFlight">SJ785</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Passenger</span>
+                                    <span class="detail-value" id="ticketPassenger">John Doe</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Class</span>
+                                    <span class="detail-value" id="ticketClass">Economy</span>
+                                </div>
+                            </div>
+                            <div class="detail-row">
+                                <div class="detail-item">
+                                    <span class="detail-label">Seat</span>
+                                    <span class="detail-value" id="ticketSeat">12A</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Gate</span>
+                                    <span class="detail-value" id="ticketGate">B12</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Boarding</span>
+                                    <span class="detail-value" id="ticketBoarding">07:45 AM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ticket-footer">
+                        <div class="barcode">
+                            <!-- Simple barcode representation -->
+                            <div class="barcode-lines"></div>
+                            <p id="bookingRefBarcode">SKYJET-5A8B3C9D</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-actions">
+                    <button class="btn btn-outline" onclick="printTicket()">
+                        <i class="fas fa-print"></i> Print Ticket
+                    </button>
+                    <button class="btn btn-primary" onclick="downloadTicket()">
+                        <i class="fas fa-download"></i> Download E-Ticket
+                    </button>
+                    <button class="btn btn-success" onclick="emailTicket()">
+                        <i class="fas fa-envelope"></i> Email Ticket
+                    </button>
+                </div>
+
+                <div class="important-info">
+                    <h3><i class="fas fa-exclamation-circle"></i> Important Information</h3>
+                    <ul>
+                        <li>Check-in opens 24 hours before departure</li>
+                        <li>Boarding begins 45 minutes before departure</li>
+                        <li>Please arrive at the airport at least 2 hours before departure</li>
+                        <li>Have your passport and booking reference ready</li>
+                        <li>Baggage allowance: 23kg checked + 7kg cabin</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sidebar-info">
+                <div class="info-card">
+                    <h3><i class="fas fa-user"></i> Passenger Details</h3>
+                    <div id="passengerDetails">
+                        <!-- Passenger details will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fas fa-credit-card"></i> Payment Details</h3>
+                    <div class="payment-summary">
+                        <div class="payment-item">
+                            <span>Total Paid</span>
+                            <span id="totalPaid">$550.00</span>
+                        </div>
+                        <div class="payment-item">
+                            <span>Payment Method</span>
+                            <span>Credit Card (**** 1234)</span>
+                        </div>
+                        <div class="payment-item">
+                            <span>Payment Date</span>
+                            <span id="paymentDate">10 aug, 2026</span>
+                        </div>
+                        <div class="payment-item">
+                            <span>Transaction ID</span>
+                            <span>TXN-789456123</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fas fa-headset"></i> Need Help?</h3>
+                    <div class="support-info">
+                        <p><i class="fas fa-phone"></i> 1-800-SKY-JET</p>
+                        <p><i class="fas fa-envelope"></i> support@skyjet.com</p>
+                        <p><i class="fas fa-clock"></i> 24/7 Support Available</p>
+                    </div>
+                    <button class="btn btn-outline btn-block">
+                        <i class="fas fa-comments"></i> Live Chat
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="next-steps">
+            <h2>What's Next?</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Download Our App</h3>
+                    <p>Get mobile boarding passes and real-time updates</p>
+                    <button class="btn btn-outline btn-small">
+                        <i class="fab fa-apple"></i> App Store
+                    </button>
+                    <button class="btn btn-outline btn-small">
+                        <i class="fab fa-google-play"></i> Play Store
+                    </button>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Manage Booking</h3>
+                    <p>Make changes, add services, or check flight status</p>
+                    <button class="btn btn-primary btn-small">
+                        <i class="fas fa-cog"></i> Manage Booking
+                    </button>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-suitcase-rolling"></i>
+                    </div>
+                    <h3>Add Services</h3>
+                    <p>Upgrade seats, add baggage, or request special meals</p>
+                    <button class="btn btn-primary btn-small">
+                        <i class="fas fa-plus"></i> Add Services
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-plane"></i>
+                        <h2>SkyJet <span>Airlines</span></h2>
+                    </div>
+                    <p>Your journey begins with us. Fly smarter, fly better.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Need Help?</h3>
+                    <p><i class="fas fa-phone"></i> 1-800-SKY-JET</p>
+                    <p><i class="fas fa-envelope"></i> support@skyjet.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 SkyJet Airlines. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Generate random booking reference
+        function generateBookingRef() {
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            let ref = '';
+            for (let i = 0; i < 8; i++) {
+                ref += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return ref;
+        }
+
+        // Load booking data
+        window.addEventListener('DOMContentLoaded', () => {
+            const userName = localStorage.getItem('userName') || 'Guest';
+            document.getElementById('userName').textContent = userName;
+            
+            // Generate booking reference
+            const bookingRef = generateBookingRef();
+            document.getElementById('bookingRef').textContent = bookingRef;
+            document.getElementById('bookingRefBarcode').textContent = `SKYJET-${bookingRef}`;
+            
+            // Load flight data
+            const flightData = JSON.parse(localStorage.getItem('selectedFlight') || '{}');
+            const passengerData = JSON.parse(localStorage.getItem('passengerData') || '{}');
+            
+            // Update flight info
+            if (flightData) {
+                document.getElementById('departureCity').textContent = `${flightData.departureCity || 'New York'} (${flightData.departure || 'JFK'})`;
+                document.getElementById('arrivalCity').textContent = `${flightData.arrivalCity || 'Los Angeles'} (${flightData.arrival || 'LAX'})`;
+                document.getElementById('ticketFlight').textContent = flightData.flightNumber || 'SJ785';
+                document.getElementById('flightDuration').textContent = flightData.duration || '6h 15m';
+                document.getElementById('ticketClass').textContent = localStorage.getItem('travelClass') || 'Economy';
+                
+                // Set dates and times
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                const departureTime = flightData.departureTime || '08:30 AM';
+                const arrivalTime = flightData.arrivalTime || '11:45 AM';
+                
+                document.getElementById('departureDate').textContent = tomorrow.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+                document.getElementById('arrivalDate').textContent = tomorrow.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+                document.getElementById('departureTime').textContent = departureTime;
+                document.getElementById('arrivalTime').textContent = arrivalTime;
+                
+                // Calculate boarding time (45 minutes before departure)
+                const [time, modifier] = departureTime.split(' ');
+                let [hours, minutes] = time.split(':');
+                hours = parseInt(hours);
+                if (modifier === 'PM' && hours < 12) hours += 12;
+                if (modifier === 'AM' && hours === 12) hours = 0;
+                
+                const boardingTime = new Date(tomorrow);
+                boardingTime.setHours(hours);
+                boardingTime.setMinutes(minutes - 45);
+                
+                document.getElementById('ticketBoarding').textContent = boardingTime.toLocaleTimeString('en-US', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            }
+            
+            // Update passenger info
+            if (passengerData.primary) {
+                document.getElementById('ticketPassenger').textContent = 
+                    `${passengerData.primary.firstName} ${passengerData.primary.lastName}`;
+                
+                // Display passenger details
+                const passengerContainer = document.getElementById('passengerDetails');
+                passengerContainer.innerHTML = `
+                    <p><strong>${passengerData.primary.firstName} ${passengerData.primary.lastName}</strong></p>
+                    <p>${passengerData.primary.gender} • ${new Date(passengerData.primary.dob).toLocaleDateString()}</p>
+                    <p>Passport: ${passengerData.primary.passport}</p>
+                    <p>${passengerData.primary.email}</p>
+                    <p>${passengerData.primary.phone}</p>
+                `;
+                
+                if (passengerData.additional && passengerData.additional.length > 0) {
+                    passengerContainer.innerHTML += `<p><strong>+${passengerData.additional.length} additional passenger(s)</strong></p>`;
+                }
+            }
+            
+            // Update payment info
+            document.getElementById('paymentDate').textContent = new Date().toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+            });
+            
+            // Update total paid
+            const basePrice = flightData.price || 450;
+            const passengerCount = parseInt(localStorage.getItem('passengerCount') || 1);
+            const total = (basePrice * passengerCount) + (75 * passengerCount) + (25 * passengerCount);
+            document.getElementById('totalPaid').textContent = `$${total.toFixed(2)}`;
+            
+            // Generate random seat and gate
+            const seats = ['12A', '14B', '16C', '18D', '20E', '22F'];
+            const gates = ['A12', 'B14', 'C16', 'D18', 'E20'];
+            document.getElementById('ticketSeat').textContent = seats[Math.floor(Math.random() * seats.length)];
+            document.getElementById('ticketGate').textContent = gates[Math.floor(Math.random() * gates.length)];
+        });
+
+        // Print ticket
+        function printTicket() {
+            window.print();
+        }
+
+        // Download ticket
+        function downloadTicket() {
+            alert('E-Ticket download started. Check your downloads folder.');
+            // In a real app, this would generate and download a PDF
+        }
+
+        // Email ticket
+        function emailTicket() {
+            const email = JSON.parse(localStorage.getItem('passengerData') || '{}').primary?.email;
+            if (email) {
+                alert(`E-Ticket has been sent to ${email}`);
+            } else {
+                alert('Please provide an email address in your profile');
+            }
+        }
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

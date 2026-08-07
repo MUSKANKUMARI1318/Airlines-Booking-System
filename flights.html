@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyJet Airlines | Flights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-plane"></i>
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>SkyJet <span>Airlines</span></h1>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="flights.html" class="active">Flights</a>
+                <a href="#">My Bookings</a>
+                <a href="#">Check-in</a>
+                <div class="user-menu">
+                    <span id="userName">Guest</span>
+                    <div class="user-dropdown">
+                        <a href="#"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#"><i class="fas fa-ticket-alt"></i> My Bookings</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+
+        <!-- Flight Search -->
+        <div class="flight-search-container">
+            <div class="search-filters">
+                <div class="filter-card">
+                    <h3><i class="fas fa-sliders-h"></i> Search Filters</h3>
+                    
+                    <div class="filter-section">
+                        <h4>Stops</h4>
+                        <label class="radio">
+                            <input type="radio" name="stops" checked>
+                            <span>Non-stop</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="stops">
+                            <span>1 Stop</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="stops">
+                            <span>2+ Stops</span>
+                        </label>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Departure Time</h4>
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            <span>Early Morning (12am-6am)</span>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" checked>
+                            <span>Morning (6am-12pm)</span>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" checked>
+                            <span>Afternoon (12pm-6pm)</span>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            <span>Evening (6pm-12am)</span>
+                        </label>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Price Range</h4>
+                        <div class="price-range">
+                            <input type="range" min="0" max="5000" value="2500" class="slider">
+                            <div class="range-values">
+                                <span>$0</span>
+                                <span>$2500</span>
+                                <span>$5000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Airlines</h4>
+                        <label class="checkbox">
+                            <input type="checkbox" checked>
+                            <span>SkyJet Airlines</span>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            <span>Global Airways</span>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            <span>Continental Express</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flight-results">
+                <!-- Search Form -->
+                <div class="search-form-card">
+                    <form id="flightSearchForm" class="search-form-inline">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-plane-departure"></i> From</label>
+                                <input type="text" id="from" value="New York (JFK)" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-plane-arrival"></i> To</label>
+                                <input type="text" id="to" value="Los Angeles (LAX)" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar-alt"></i> Departure</label>
+                                <input type="date" id="departureDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar-alt"></i> Return</label>
+                                <input type="date" id="returnDate">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-users"></i> Passengers</label>
+                                <div class="passenger-selector">
+                                    <button type="button" class="passenger-btn" onclick="updatePassengers(-1, 'adults')">-</button>
+                                    <span id="adultsCount">1</span> Adult
+                                    <button type="button" class="passenger-btn" onclick="updatePassengers(1, 'adults')">+</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-chair"></i> Class</label>
+                                <select id="class">
+                                    <option>Economy</option>
+                                    <option>Premium Economy</option>
+                                    <option>Business</option>
+                                    <option>First Class</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-search"></i> Search
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Search Results -->
+                <div class="results-header">
+                    <h3><i class="fas fa-plane"></i> Available Flights</h3>
+                    <div class="sort-options">
+                        <select id="sortBy">
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Duration: Shortest</option>
+                            <option>Departure Time</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Flight List -->
+                <div class="flight-list" id="flightList">
+                    <!-- Flight cards will be dynamically inserted here -->
+                </div>
+
+                <!-- Loading State -->
+                <div class="loading" id="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Searching for flights...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-plane"></i>
+                        <h2>SkyJet <span>Airlines</span></h2>
+                    </div>
+                    <p>Your journey begins with us. Fly smarter, fly better.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Need Help?</h3>
+                    <p><i class="fas fa-phone"></i> 1-800-SKY-JET</p>
+                    <p><i class="fas fa-envelope"></i> support@skyjet.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SkyJet Airlines. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Flight Details Modal -->
+    <div class="modal" id="flightModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Flight Details</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="flightModalBody">
+                <!-- Flight details will be inserted here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="proceedToPassenger()">
+                    <i class="fas fa-arrow-right"></i> Continue to Passenger Details
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize variables
+        let adultsCount = 1;
+        let childrenCount = 0;
+        let selectedFlight = null;
+
+        // Set default date to tomorrow
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        document.getElementById('departureDate').value = tomorrow.toISOString().split('T')[0];
+        document.getElementById('departureDate').min = today.toISOString().split('T')[0];
+
+        // Load user info
+        window.addEventListener('DOMContentLoaded', () => {
+            const userName = localStorage.getItem('userName') || 'Guest';
+            document.getElementById('userName').textContent = userName;
+            
+            // Load initial flights
+            searchFlights();
+        });
+
+        // Passenger counter functions
+        function updatePassengers(change, type) {
+            if (type === 'adults') {
+                adultsCount = Math.max(1, adultsCount + change);
+                document.getElementById('adultsCount').textContent = adultsCount;
+            }
+        }
+
+        // Flight search function
+        function searchFlights() {
+            const loading = document.getElementById('loading');
+            const flightList = document.getElementById('flightList');
+            
+            loading.style.display = 'flex';
+            flightList.innerHTML = '';
+
+            // Simulate API call
+            setTimeout(() => {
+                loading.style.display = 'none';
+                displayFlights(generateSampleFlights());
+            }, 1500);
+        }
+
+        // Generate sample flights
+        function generateSampleFlights() {
+            const flights = [];
+            const airlines = ['SkyJet Airlines', 'Global Airways', 'Continental Express'];
+            const times = ['06:30 AM', '09:15 AM', '12:45 PM', '03:30 PM', '07:20 PM', '10:50 PM'];
+            const durations = ['2h 15m', '3h 45m', '5h 20m', '6h 15m'];
+            
+            for (let i = 0; i < 6; i++) {
+                flights.push({
+                    id: i + 1,
+                    flightNumber: `SJ${Math.floor(100 + Math.random() * 900)}`,
+                    airline: airlines[i % airlines.length],
+                    departure: 'JFK',
+                    departureCity: 'New York',
+                    arrival: 'LAX',
+                    arrivalCity: 'Los Angeles',
+                    departureTime: times[i % times.length],
+                    arrivalTime: times[(i + 2) % times.length],
+                    duration: durations[i % durations.length],
+                    price: Math.floor(200 + Math.random() * 600),
+                    class: 'Economy',
+                    stops: i % 3 === 0 ? 'Non-stop' : '1 stop',
+                    amenities: ['Wi-Fi', 'Meal', 'Entertainment']
+                });
+            }
+            
+            return flights;
+        }
+
+        // Display flights
+        function displayFlights(flights) {
+            const flightList = document.getElementById('flightList');
+            
+            flights.forEach(flight => {
+                const flightCard = document.createElement('div');
+                flightCard.className = 'flight-card';
+                flightCard.innerHTML = `
+                    <div class="flight-card-header">
+                        <div class="airline-info">
+                            <i class="fas fa-plane"></i>
+                            <div>
+                                <h4>${flight.airline}</h4>
+                                <p>${flight.flightNumber} • ${flight.class}</p>
+                            </div>
+                        </div>
+                        <div class="flight-price">
+                            <h3>$${flight.price}</h3>
+                            <p>per passenger</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flight-details">
+                        <div class="flight-times">
+                            <div class="time-block">
+                                <span class="time">${flight.departureTime}</span>
+                                <span class="city">${flight.departureCity} (${flight.departure})</span>
+                            </div>
+                            <div class="flight-duration">
+                                <i class="fas fa-plane"></i>
+                                <span>${flight.duration}</span>
+                                <span class="stops">${flight.stops}</span>
+                            </div>
+                            <div class="time-block">
+                                <span class="time">${flight.arrivalTime}</span>
+                                <span class="city">${flight.arrivalCity} (${flight.arrival})</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flight-amenities">
+                            ${flight.amenities.map(amenity => `<span class="amenity"><i class="fas fa-check"></i> ${amenity}</span>`).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="flight-card-footer">
+                        <button class="btn btn-outline" onclick="viewFlightDetails(${flight.id})">
+                            <i class="fas fa-info-circle"></i> Details
+                        </button>
+                        <button class="btn btn-primary" onclick="selectFlight(${flight.id})">
+                            <i class="fas fa-chair"></i> Select Flight
+                        </button>
+                    </div>
+                `;
+                
+                flightList.appendChild(flightCard);
+            });
+        }
+
+        // View flight details
+        function viewFlightDetails(flightId) {
+            const flight = generateSampleFlights().find(f => f.id === flightId);
+            if (!flight) return;
+            
+            const modalBody = document.getElementById('flightModalBody');
+            modalBody.innerHTML = `
+                <div class="flight-detail-view">
+                    <div class="flight-header">
+                        <div class="airline-info">
+                            <i class="fas fa-plane"></i>
+                            <div>
+                                <h4>${flight.airline}</h4>
+                                <p>Flight ${flight.flightNumber} • ${flight.class}</p>
+                            </div>
+                        </div>
+                        <div class="flight-price">
+                            <h3>$${flight.price}</h3>
+                            <p>Total: $${flight.price * (adultsCount + childrenCount)}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flight-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">${flight.departureTime}</div>
+                            <div class="timeline-content">
+                                <h4>${flight.departureCity} (${flight.departure})</h4>
+                                <p>John F. Kennedy International Airport</p>
+                                <p>Terminal 4 • Gate B12</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-duration">
+                                <i class="fas fa-plane"></i>
+                                <span>${flight.duration}</span>
+                                <span class="stops">${flight.stops}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-time">${flight.arrivalTime}</div>
+                            <div class="timeline-content">
+                                <h4>${flight.arrivalCity} (${flight.arrival})</h4>
+                                <p>Los Angeles International Airport</p>
+                                <p>Terminal 7 • Gate A45</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flight-amenities-details">
+                        <h4><i class="fas fa-utensils"></i> In-flight Services</h4>
+                        <div class="amenities-grid">
+                            <div class="amenity-item">
+                                <i class="fas fa-wifi"></i>
+                                <span>Free Wi-Fi</span>
+                            </div>
+                            <div class="amenity-item">
+                                <i class="fas fa-utensils"></i>
+                                <span>Complimentary Meal</span>
+                            </div>
+                            <div class="amenity-item">
+                                <i class="fas fa-film"></i>
+                                <span>Entertainment System</span>
+                            </div>
+                            <div class="amenity-item">
+                                <i class="fas fa-suitcase-rolling"></i>
+                                <span>30kg Baggage Allowance</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flight-notes">
+                        <p><i class="fas fa-info-circle"></i> Check-in opens 24 hours before departure</p>
+                        <p><i class="fas fa-info-circle"></i> Boarding begins 45 minutes before departure</p>
+                    </div>
+                </div>
+            `;
+            
+            selectedFlight = flight;
+            openModal();
+        }
+
+        // Select flight
+        function selectFlight(flightId) {
+            selectedFlight = generateSampleFlights().find(f => f.id === flightId);
+            if (selectedFlight) {
+                // Store flight in localStorage
+                localStorage.setItem('selectedFlight', JSON.stringify(selectedFlight));
+                localStorage.setItem('passengerCount', adultsCount + childrenCount);
+                localStorage.setItem('travelClass', document.getElementById('class').value);
+                
+                // Redirect to passenger details page
+                window.location.href = 'passenger.html';
+            }
+        }
+
+        // Proceed to passenger details
+        function proceedToPassenger() {
+            if (selectedFlight) {
+                localStorage.setItem('selectedFlight', JSON.stringify(selectedFlight));
+                closeModal();
+                window.location.href = 'passenger.html';
+            }
+        }
+
+        // Modal functions
+        function openModal() {
+            document.getElementById('flightModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('flightModal').style.display = 'none';
+        }
+
+        // Event listeners
+        document.getElementById('flightSearchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            searchFlights();
+        });
+
+        document.querySelector('.modal-close').addEventListener('click', closeModal);
+        document.querySelector('.modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyJet Airlines | Passenger Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-plane"></i>
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>SkyJet <span>Airlines</span></h1>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="flights.html">Flights</a>
+                <div class="user-menu">
+                    <span id="userName">Guest</span>
+                    <div class="user-dropdown">
+                        <a href="#"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#"><i class="fas fa-ticket-alt"></i> My Bookings</a>
+                        <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+
+        <!-- Booking Progress -->
+        <div class="booking-progress">
+            <div class="progress-step completed">
+                <div class="step-number">1</div>
+                <div class="step-label">Search Flights</div>
+            </div>
+            <div class="progress-step completed">
+                <div class="step-number">2</div>
+                <div class="step-label">Select Flight</div>
+            </div>
+            <div class="progress-step active">
+                <div class="step-number">3</div>
+                <div class="step-label">Passenger Details</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-number">4</div>
+                <div class="step-label">Payment</div>
+            </div>
+            <div class="progress-step">
+                <div class="step-number">5</div>
+                <div class="step-label">Confirmation</div>
+            </div>
+        </div>
+
+        <div class="passenger-container">
+            <!-- Flight Summary -->
+            <div class="flight-summary-sidebar">
+                <div class="summary-card">
+                    <h3><i class="fas fa-receipt"></i> Booking Summary</h3>
+                    
+                    <div class="summary-details">
+                        <div class="summary-item">
+                            <span>Flight:</span>
+                            <span id="summaryFlight">SJ785</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Route:</span>
+                            <span id="summaryRoute">JFK → LAX</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Date:</span>
+                            <span id="summaryDate">Dec 15, 2023</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Time:</span>
+                            <span id="summaryTime">08:30 AM</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Class:</span>
+                            <span id="summaryClass">Economy</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Passengers:</span>
+                            <span id="summaryPassengers">1</span>
+                        </div>
+                    </div>
+
+                    <div class="price-breakdown">
+                        <div class="price-item">
+                            <span>Base Fare (x<span id="passengerCount">1</span>)</span>
+                            <span id="baseFare">$450.00</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Taxes & Fees</span>
+                            <span id="taxes">$75.00</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Service Charge</span>
+                            <span id="serviceCharge">$25.00</span>
+                        </div>
+                        <div class="price-item total">
+                            <span>Total Amount</span>
+                            <span id="totalAmount">$550.00</span>
+                        </div>
+                    </div>
+
+                    <div class="summary-note">
+                        <p><i class="fas fa-info-circle"></i> Free cancellation within 24 hours</p>
+                        <p><i class="fas fa-info-circle"></i> Price includes all taxes and fees</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Passenger Form -->
+            <div class="passenger-form-container">
+                <div class="form-header">
+                    <h2><i class="fas fa-users"></i> Passenger Information</h2>
+                    <p>Please provide details for all passengers</p>
+                </div>
+
+                <form id="passengerForm">
+                    <!-- Primary Passenger -->
+                    <div class="passenger-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-user"></i> Primary Passenger</h3>
+                            <span class="badge">Required</span>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName"><i class="fas fa-user"></i> First Name</label>
+                                <input type="text" id="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName"><i class="fas fa-user"></i> Last Name</label>
+                                <input type="text" id="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="gender"><i class="fas fa-venus-mars"></i> Gender</label>
+                                <select id="gender" required>
+                                    <option value="">Select</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob"><i class="fas fa-birthday-cake"></i> Date of Birth</label>
+                                <input type="date" id="dob" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="passport"><i class="fas fa-passport"></i> Passport Number</label>
+                                <input type="text" id="passport" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nationality"><i class="fas fa-globe"></i> Nationality</label>
+                                <select id="nationality" required>
+                                    <option value="">Select Country</option>
+                                    <option value="US">United States</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="IN">India</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="passenger-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-address-book"></i> Contact Information</h3>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address"><i class="fas fa-home"></i> Address</label>
+                            <input type="text" id="address" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city"><i class="fas fa-city"></i> City</label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="state"><i class="fas fa-map"></i> State/Province</label>
+                                <input type="text" id="state" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="zip"><i class="fas fa-mail-bulk"></i> ZIP/Postal Code</label>
+                                <input type="text" id="zip" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Passengers -->
+                    <div class="passenger-section" id="additionalPassengersSection">
+                        <div class="section-header">
+                            <h3><i class="fas fa-user-friends"></i> Additional Passengers</h3>
+                            <button type="button" class="btn btn-outline btn-small" onclick="addPassenger()">
+                                <i class="fas fa-plus"></i> Add Passenger
+                            </button>
+                        </div>
+                        
+                        <div id="additionalPassengers">
+                            <!-- Additional passengers will be added here -->
+                        </div>
+                    </div>
+
+                    <!-- Special Requests -->
+                    <div class="passenger-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-star"></i> Special Requests</h3>
+                            <span class="badge">Optional</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mealPreference"><i class="fas fa-utensils"></i> Meal Preference</label>
+                            <select id="mealPreference">
+                                <option value="">Standard Meal</option>
+                                <option value="vegetarian">Vegetarian</option>
+                                <option value="vegan">Vegan</option>
+                                <option value="gluten-free">Gluten-Free</option>
+                                <option value="kosher">Kosher</option>
+                                <option value="halal">Halal</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="specialAssistance"><i class="fas fa-wheelchair"></i> Special Assistance</label>
+                            <select id="specialAssistance">
+                                <option value="">No special assistance required</option>
+                                <option value="wheelchair">Wheelchair assistance</option>
+                                <option value="vision">Vision impaired assistance</option>
+                                <option value="hearing">Hearing impaired assistance</option>
+                                <option value="medical">Medical assistance</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="seatPreference"><i class="fas fa-chair"></i> Seat Preference</label>
+                            <select id="seatPreference">
+                                <option value="">No preference</option>
+                                <option value="window">Window Seat</option>
+                                <option value="aisle">Aisle Seat</option>
+                                <option value="extra-legroom">Extra Legroom</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes"><i class="fas fa-sticky-note"></i> Additional Notes</label>
+                            <textarea id="notes" rows="3" placeholder="Any additional requests or notes..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Terms and Conditions -->
+                    <div class="terms-section">
+                        <label class="checkbox">
+                            <input type="checkbox" id="terms" required>
+                            <span>I agree to the <a href="#">Terms and Conditions</a>, <a href="#">Privacy Policy</a>, and understand the <a href="#">Cancellation Policy</a>.</span>
+                        </label>
+                        
+                        <label class="checkbox">
+                            <input type="checkbox" id="promotions">
+                            <span>Send me promotional offers and flight updates via email</span>
+                        </label>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="window.location.href='flights.html'">
+                            <i class="fas fa-arrow-left"></i> Back to Flights
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-credit-card"></i> Continue to Payment
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-plane"></i>
+                        <h2>SkyJet <span>Airlines</span></h2>
+                    </div>
+                    <p>Your journey begins with us. Fly smarter, fly better.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Need Help?</h3>
+                    <p><i class="fas fa-phone"></i> 1-800-SKY-JET</p>
+                    <p><i class="fas fa-envelope"></i> support@skyjet.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 SkyJet Airlines. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Add Passenger Modal -->
+    <div class="modal" id="addPassengerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Passenger</h3>
+                <button class="modal-close" onclick="closeAddPassengerModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addPassengerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" id="addFirstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" id="addLastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select id="addGender" required>
+                                <option value="">Select</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Date of Birth</label>
+                            <input type="date" id="addDob" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Passport Number</label>
+                        <input type="text" id="addPassport" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeAddPassengerModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="savePassenger()">Add Passenger</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize variables
+        let additionalPassengers = [];
+        let passengerCounter = 1;
+
+        // Load saved data
+        window.addEventListener('DOMContentLoaded', () => {
+            const userName = localStorage.getItem('userName') || 'Guest';
+            document.getElementById('userName').textContent = userName;
+            
+            // Load flight details from localStorage
+            const flightData = JSON.parse(localStorage.getItem('selectedFlight') || '{}');
+            const passengerCount = localStorage.getItem('passengerCount') || 1;
+            const travelClass = localStorage.getItem('travelClass') || 'Economy';
+            
+            // Update summary
+            if (flightData) {
+                document.getElementById('summaryFlight').textContent = flightData.flightNumber || 'SJ785';
+                document.getElementById('summaryRoute').textContent = 
+                    `${flightData.departure || 'JFK'} → ${flightData.arrival || 'LAX'}`;
+                document.getElementById('summaryClass').textContent = travelClass;
+                document.getElementById('summaryPassengers').textContent = passengerCount;
+                document.getElementById('passengerCount').textContent = passengerCount;
+                
+                // Set dates
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                document.getElementById('summaryDate').textContent = tomorrow.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+                
+                // Set default DOB to 30 years ago
+                const defaultDob = new Date();
+                defaultDob.setFullYear(defaultDob.getFullYear() - 30);
+                document.getElementById('dob').value = defaultDob.toISOString().split('T')[0];
+                document.getElementById('addDob').value = defaultDob.toISOString().split('T')[0];
+                
+                // Calculate price
+                const basePrice = flightData.price || 450;
+                const totalPassengers = parseInt(passengerCount);
+                const baseFare = basePrice * totalPassengers;
+                const taxes = 75 * totalPassengers;
+                const serviceCharge = 25 * totalPassengers;
+                const total = baseFare + taxes + serviceCharge;
+                
+                document.getElementById('baseFare').textContent = `$${baseFare.toFixed(2)}`;
+                document.getElementById('taxes').textContent = `$${taxes.toFixed(2)}`;
+                document.getElementById('serviceCharge').textContent = `$${serviceCharge.toFixed(2)}`;
+                document.getElementById('totalAmount').textContent = `$${total.toFixed(2)}`;
+                
+                // Pre-fill contact info if user is logged in
+                const userEmail = localStorage.getItem('userEmail');
+                if (userEmail) {
+                    document.getElementById('email').value = userEmail;
+                }
+            }
+        });
+
+        // Add passenger
+        function addPassenger() {
+            const modal = document.getElementById('addPassengerModal');
+            modal.style.display = 'flex';
+            
+            // Clear form
+            document.getElementById('addPassengerForm').reset();
+        }
+
+        // Save passenger
+        function savePassenger() {
+            const firstName = document.getElementById('addFirstName').value;
+            const lastName = document.getElementById('addLastName').value;
+            const gender = document.getElementById('addGender').value;
+            const dob = document.getElementById('addDob').value;
+            const passport = document.getElementById('addPassport').value;
+            
+            if (!firstName || !lastName || !gender || !dob || !passport) {
+                alert('Please fill all required fields');
+                return;
+            }
+            
+            const passenger = {
+                id: passengerCounter++,
+                firstName,
+                lastName,
+                gender,
+                dob,
+                passport
+            };
+            
+            additionalPassengers.push(passenger);
+            updateAdditionalPassengersList();
+            closeAddPassengerModal();
+        }
+
+        // Update additional passengers list
+        function updateAdditionalPassengersList() {
+            const container = document.getElementById('additionalPassengers');
+            container.innerHTML = '';
+            
+            additionalPassengers.forEach(passenger => {
+                const passengerItem = document.createElement('div');
+                passengerItem.className = 'passenger-item';
+                passengerItem.innerHTML = `
+                    <div class="passenger-info">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <h4>${passenger.firstName} ${passenger.lastName}</h4>
+                            <p>Passport: ${passenger.passport} • ${passenger.gender}</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger btn-small" onclick="removePassenger(${passenger.id})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                container.appendChild(passengerItem);
+            });
+        }
+
+        // Remove passenger
+        function removePassenger(id) {
+            additionalPassengers = additionalPassengers.filter(p => p.id !== id);
+            updateAdditionalPassengersList();
+        }
+
+        // Close add passenger modal
+        function closeAddPassengerModal() {
+            document.getElementById('addPassengerModal').style.display = 'none';
+        }
+
+        // Form submission
+        document.getElementById('passengerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            const requiredFields = ['firstName', 'lastName', 'gender', 'dob', 'passport', 'nationality', 'email', 'phone'];
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                const element = document.getElementById(field);
+                if (!element.value) {
+                    element.style.borderColor = '#f44336';
+                    isValid = false;
+                } else {
+                    element.style.borderColor = '#ddd';
+                }
+            });
+            
+            if (!isValid) {
+                alert('Please fill all required fields');
+                return;
+            }
+            
+            if (!document.getElementById('terms').checked) {
+                alert('Please agree to the terms and conditions');
+                return;
+            }
+            
+            // Save passenger data
+            const passengerData = {
+                primary: {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    gender: document.getElementById('gender').value,
+                    dob: document.getElementById('dob').value,
+                    passport: document.getElementById('passport').value,
+                    nationality: document.getElementById('nationality').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    address: document.getElementById('address').value,
+                    city: document.getElementById('city').value,
+                    state: document.getElementById('state').value,
+                    zip: document.getElementById('zip').value
+                },
+                additional: additionalPassengers,
+                preferences: {
+                    meal: document.getElementById('mealPreference').value,
+                    assistance: document.getElementById('specialAssistance').value,
+                    seat: document.getElementById('seatPreference').value,
+                    notes: document.getElementById('notes').value
+                }
+            };
+            
+            localStorage.setItem('passengerData', JSON.stringify(passengerData));
+            
+            // Simulate processing
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                // Redirect to payment page (you can create payment.html)
+                window.location.href = 'booking.html';
+            }, 1500);
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('addPassengerModal').addEventListener('click', function(e) {
+            if (e.target === this) closeAddPassengerModal();
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

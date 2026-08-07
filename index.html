@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyJet Airlines | Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-plane"></i>
+                <h1>SkyJet <span>Airlines</span></h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="flights.html">Flights</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Fly With Comfort, Arrive With Style</h2>
+                <p>Book flights to over 200 destinations worldwide with SkyJet Airlines. Experience luxury travel at affordable prices.</p>
+                <a href="flights.html" class="btn btn-large">
+                    <i class="fas fa-search"></i> Book Your Flight Now
+                </a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Airplane">
+            </div>
+        </section>
+
+        <!-- Search Form -->
+        <section class="search-section">
+            <div class="search-card">
+                <h3><i class="fas fa-search"></i> Find Your Perfect Flight</h3>
+                <form id="quickSearchForm" class="search-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-plane-departure"></i> From</label>
+                            <input type="text" placeholder="City or Airport" value="New York (JFK)" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-plane-arrival"></i> To</label>
+                            <input type="text" placeholder="City or Airport" value="Los Angeles (LAX)" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-calendar-alt"></i> Departure</label>
+                            <input type="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-calendar-alt"></i> Return (Optional)</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-users"></i> Passengers</label>
+                            <select>
+                                <option>1 Passenger</option>
+                                <option>2 Passengers</option>
+                                <option>3 Passengers</option>
+                                <option>4 Passengers</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-chair"></i> Class</label>
+                            <select>
+                                <option>Economy</option>
+                                <option>Premium Economy</option>
+                                <option>Business</option>
+                                <option>First Class</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-search"></i> Search Flights
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features" id="services">
+            <h2 class="section-title">Why Choose SkyJet?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safe & Secure</h3>
+                    <p>Your safety is our priority. We maintain the highest safety standards in the industry.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>On-time Performance</h3>
+                    <p>95% on-time arrival rate across all our flights worldwide.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>Free Wi-Fi</h3>
+                    <p>Stay connected with complimentary high-speed internet on all flights.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Gourmet Meals</h3>
+                    <p>Enjoy chef-prepared meals with a selection of international cuisines.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Destinations -->
+        <section class="destinations">
+            <h2 class="section-title">Popular Destinations</h2>
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Paris">
+                    <div class="destination-info">
+                        <h3>Paris, France</h3>
+                        <p>From $499</p>
+                        <a href="flights.html?to=Paris" class="btn btn-small">Book Now</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Tokyo">
+                    <div class="destination-info">
+                        <h3>Tokyo, Japan</h3>
+                        <p>From $899</p>
+                        <a href="flights.html?to=Tokyo" class="btn btn-small">Book Now</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Sydney">
+                    <div class="destination-info">
+                        <h3>Sydney, Australia</h3>
+                        <p>From $799</p>
+                        <a href="flights.html?to=Sydney" class="btn btn-small">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer" id="about">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-plane"></i>
+                        <h2>SkyJet <span>Airlines</span></h2>
+                    </div>
+                    <p>Your journey begins with us. Fly smarter, fly better.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="flights.html">Flights</a>
+                    <a href="login.html">My Bookings</a>
+                    <a href="#">Check-in</a>
+                    <a href="#">Flight Status</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <a href="#">Business Class</a>
+                    <a href="#">First Class</a>
+                    <a href="#">Premium Economy</a>
+                    <a href="#">Baggage</a>
+                    <a href="#">Special Assistance</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> 1-800-SKY-JET</p>
+                    <p><i class="fas fa-envelope"></i> support@skyjet.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Skyway Blvd, NYC</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SkyJet Airlines. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Quick search form handler
+        document.getElementById('quickSearchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            window.location.href = 'flights.html';
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
