@@ -1,17 +1,5 @@
-```css
-/* =========================================================
-   ✈️ MODERN FLIGHT BOOKING UI
-   DARK COLORFUL NEON THEME
-   Soft Neon Glow + Gradient Background
-   ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap');
-
-
-/* =========================================================
-   RESET & ROOT
-   ========================================================= */
-
 * {
     margin: 0;
     padding: 0;
